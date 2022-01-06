@@ -1,4 +1,5 @@
-#pragma once
+#ifndef H_CSVSINGLEINCLUDE_H
+#define H_CSVSINGLEINCLUDE_H
 /*
 CSV for C++, version 2.1.3
 https://github.com/vincentlaucsb/csv-parser
@@ -5882,7 +5883,8 @@ namespace csv {
          *  ASCII number for a character c and, v[i + 128] is true if
          *  c is a whitespace character
          */
-        HEDLEY_CONST CONSTEXPR_17 WhitespaceMap make_ws_flags(const char* ws_chars, size_t n_chars) {
+
+        HEDLEY_CONST inline/*CONSTEXPR*/ WhitespaceMap make_ws_flags(const char* ws_chars, size_t n_chars) {
             std::array<bool, 256> ret = {};
             for (int i = -128; i < 128; i++) {
                 const int arr_idx = i + 128;
@@ -8483,4 +8485,5 @@ namespace csv {
 }
 
 
+#endif
 #endif
